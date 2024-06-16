@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/akihiro21/goChat/handlers/database"
+	"github.com/Ghleii/goChat/handlers/database"
 )
 
 func room(w http.ResponseWriter, r *http.Request) {

@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/akihiro21/goChat/handlers/database"
+	"github.com/Ghleii/goChat/handlers/database"
 )
 
 type Msg struct {

@@ -1,9 +1,9 @@
-module github.com/akihiro21/goChat
+module github.com/Ghleii/goChat
 
 go 1.18
 
 require (
-	github.com/akihiro21/goChat/handlers v0.0.0-00010101000000-000000000000
+	github.com/Ghleii/goChat/handlers 07d3eaf2c488e2f5e46ef1786352a2091a68ef2f
 	github.com/go-sql-driver/mysql v1.6.0
 )
 
@@ -15,4 +15,4 @@ require (
 	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e // indirect
 )
 
-replace github.com/akihiro21/goChat/handlers => ./handlers
+replace github.com/Ghleii/goChat/handlers => ./handlers

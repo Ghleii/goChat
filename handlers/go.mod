@@ -1,4 +1,4 @@
-module github.com/akihiro21/goChat/handlers
+module github.com/Ghleii/goChat/handlers
 
 go 1.18
 

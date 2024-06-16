@@ -6,7 +6,7 @@ import (
 	"time"
 	"os"
 
-	"github.com/akihiro21/goChat/handlers/database"
+	"github.com/Ghleii/goChat/handlers/database"
 )
 
 func login(w http.ResponseWriter, r *http.Request) {

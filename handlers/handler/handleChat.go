@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/akihiro21/goChat/handlers/database"
+	"github.com/Ghleii/goChat/handlers/database"
 )
 
 type SwitchBot struct {
