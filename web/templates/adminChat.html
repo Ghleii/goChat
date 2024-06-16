@@ -1,0 +1,206 @@
+{{template "header" .}}
+<div class="flex">
+    <div class="chat">
+        {{ if .Alert }}
+        <p id="aleat" class="alert">{{ .Alert }}</p>
+        {{end}}
+        <input id="user" type="hidden" value="Orange">
+        <div class="container-fluid">
+            <div id="scroll-inner">
+                {{if .Chat}}
+                {{$v := .MyName}}
+                {{$u := .User}}
+                {{ range .Chat }}
+                <div class="chat_container">
+                    <div class="flex">
+                        {{if eq .UserName $v}}
+                        <div class="icon">
+                            <img src="/static/image/bot.jpg" alt="Avatar">
+                            <p>{{$v}}</p>
+                        </div>
+                        {{else}}
+                        <div class="icon">
+                            <img src="/static/image/user2.jpg" alt="Avatar">
+                            <p>{{$u}}</p>
+                        </div>
+                        {{end}}
+                        <p id="mes">{{ .Message }}</p>
+                    </div>
+                </div>
+                {{end}}
+                {{end}}
+            </div>
+        </div>
+        <div class="form">
+            <form id="form" action="/chat/{{.Room}}" method="post">
+                <div class="message-area">
+                    <div class="message-area-text">
+                        <input type="hidden" name="token" value="{{.Token}}">
+                        <textarea id="in_form" class="in_form" type="textarea" name="message" required></textarea>
+                    </div>
+                    <div class="message-area-button">
+                        <input class="talk" type="submit" value="Chat">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="admin">
+        <div id="scroll-inner">
+            <div class="col-auto my-1">
+                <select class="form-control" id="sample1" onchange="viewChange1();">
+                    <option value="select1">条件1</option>
+                    <option value="select2">条件2</option>
+                </select>
+            </div>
+            <div class="col-auto my-2">
+                <select class="form-control" id="sample2" onchange="viewChange2();">
+                    <option value="select1">自己開示1日目</option>
+                    <option value="select2">役割行動1日目</option>
+                    <option value="select3">自己開示2日目</option>
+                    <option value="select4">役割行動2日目</option>
+                    <option value="select5">自己開示3日目</option>
+                    <option value="select6">役割行動3日目</option>
+                </select>
+            </div>
+            <div id="conditions1" class="my-5">
+                <div id="Box1" class="my-1">
+                    {{ range .Scenario1.JikDay1 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box2" class="my-5" style="display:none;">
+                    {{ range .Scenario1.YwkDay1 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box3" class="my-5" style="display:none;">
+                    {{ range .Scenario1.JikDay2 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box4" class="my-5" style="display:none;">
+                    {{ range .Scenario1.YwkDay2 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box5" class="my-5" style="display:none;">
+                    {{ range .Scenario1.JikDay3 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box6" class="my-5" style="display:none;">
+                    {{ range .Scenario1.YwkDay3 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+            <div id="conditions2" class="my-5" style="display:none;">
+                <div id="Box7" class="my-5">
+                    {{ range .Scenario2.JikDay1 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box8" class="my-5" style="display:none;">
+                    {{ range .Scenario2.YwkDay1 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box9" class="my-5" style="display:none;">
+                    {{ range .Scenario2.JikDay2 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box10" class="my-5" style="display:none;">
+                    {{ range .Scenario2.YwkDay2 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box11" class="my-5" style="display:none;">
+                    {{ range .Scenario2.JikDay3 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+                <div id="Box12" class="my-5" style="display:none;">
+                    {{ range .Scenario2.YwkDay3 }}
+                    <div class="flex">
+                        <form id="form" action="/chat/{{$.Room}}" method="post">
+                            <input type="hidden" name="token" value="{{$.Token}}">
+                            <input id="in_form" type="text" name="message" value={{.}} readonly></input>
+                            <input type="submit" value="Chat">
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{template "footer"}}

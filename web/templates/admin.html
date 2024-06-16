@@ -1,0 +1,35 @@
+{{template "header" .}}
+
+<div class="room">
+    <h1 class="createroom"><a href="/user">User List</a></h1>
+    {{ if .Alert }}
+    <p class="alert">{{ .Alert }}</p>
+    {{end}}
+    <ul>
+        <table>
+            <tr class="heading">
+                <th>ルームID</th>
+                <th>ルーム名</th>
+                <th>日付</th>
+                <th>ユーザID</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            {{if .Room}}
+            {{ range .Room }}
+            <tr>
+                <td class="name">{{ .Id }}</td>
+                <td class="name">{{ .Name }}</td>
+                <td>{{ .Date }}</td>
+                <td>ID: {{ .User1 }} ID: {{ .User2 }}</td>
+                <td><button class="join" onclick="location.href='/chat/{{ .Name }}'">join</button></td>
+                <td><button class="join" onclick="location.href='/csv/{{ .Name }}'">csv</button></td>
+                <td><button class="join" onclick="location.href='/delete/{{ .Name }}'">del</button></td>
+            </tr>
+            {{ end }}
+            {{ end }}
+        </table>
+    </ul>
+</div>
+{{template "footer"}}

@@ -1,0 +1,24 @@
+{{template "header" .}}
+
+<div class="login">
+    <!--
+    Copyright (c) 2013 joe
+    link
+    https://codepen.io/dope/pen/krzXXz
+    Released under the MIT license
+    http://opensource.org/licenses/mit-license.php
+    -->
+    <form action="/create" method="post">
+        {{ if .Alert }}
+        <p class="alert">{{ .Alert }}</p>
+        {{end}}
+        <h1>Create Account</h1>
+        <input placeholder="名前" name="username" type="text" required />
+        <input placeholder="学籍番号(数字のみ)" name="password" type="password" required />
+        <input type="hidden" name="token" value="{{.Token}}">
+        <input class="btn" type="submit" value="Create">
+        <h6><a href="/login">login</a></h6>
+    </form>
+</div>
+
+{{template "footer"}}
